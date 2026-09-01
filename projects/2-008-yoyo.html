@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2.008 Injection-Molded Yo-Yo — Jonathan Katz</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --paper: #ffffff;
+    --ink: #15171a;
+    --muted: #626a73;
+    --line: #dfe3e8;
+    --accent: #d92345;
+    --accent-dark: #951b32;
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  img { display: block; width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+  .topbar {
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .topbar-inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand { font-weight: 800; letter-spacing: -.02em; }
+  .nav { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
+  .nav a:hover { color: var(--ink); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    min-height: 620px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-copy {
+    padding: 84px max(40px, calc((100vw - var(--max))/2)) 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(48px, 6vw, 82px);
+    line-height: .98;
+    letter-spacing: -.05em;
+    margin: 0 0 24px;
+    max-width: 760px;
+  }
+  .hero-copy p {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 650px;
+    margin: 0 0 26px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 650;
+  }
+  .hero-image {
+    background: #efefed;
+    min-height: 620px;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  section { padding: 88px 0; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 54px;
+    align-items: start;
+    margin-bottom: 42px;
+  }
+  .section-kicker {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--accent);
+  }
+  .section-head h2 {
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -.035em;
+    margin: 0 0 16px;
+  }
+  .section-head p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 780px;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: -26px;
+    position: relative;
+    z-index: 2;
+  }
+  .metric { background: #fff; padding: 26px 24px; }
+  .metric strong {
+    display: block;
+    font-size: 28px;
+    letter-spacing: -.03em;
+    margin-bottom: 5px;
+  }
+  .metric span { color: var(--muted); font-size: 14px; }
+
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .card-copy { padding: 30px; }
+  .card h3 {
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -.025em;
+  }
+  .card p { margin: 0; color: var(--muted); }
+  .photo { aspect-ratio: 4/3; object-fit: cover; }
+  .photo.tall { aspect-ratio: 3/4; }
+  .caption {
+    border-top: 1px solid var(--line);
+    padding: 12px 16px;
+    color: var(--muted);
+    font-size: 12px;
+    background: #fff;
+  }
+
+  .full-bleed {
+    background: #111317;
+    color: #fff;
+  }
+  .full-bleed .section-kicker { color: #ff5a77; }
+  .full-bleed .section-head p { color: #b7bdc5; }
+  .full-bleed .section-head h2 { color: #fff; }
+  .wide-image {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #292d33;
+    background: #1a1d22;
+  }
+  .wide-image img {
+    aspect-ratio: 16/7;
+    object-fit: cover;
+  }
+  .wide-caption {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 24px 26px 28px;
+    color: #c4c9cf;
+  }
+  .wide-caption strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 7px;
+  }
+
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .step {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .step-num {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: #fde8ed;
+    color: var(--accent-dark);
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .step h3 { margin: 0 0 8px; font-size: 19px; }
+  .step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 22px;
+  }
+  .gallery-col {
+    display: grid;
+    gap: 22px;
+  }
+  .gallery img {
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: #fff;
+    object-fit: cover;
+  }
+  .gallery .g1 { aspect-ratio: 4/3; }
+  .gallery .g2 { aspect-ratio: 3/4; }
+  .gallery .g3 { aspect-ratio: 4/3; }
+  .gallery .g4 { aspect-ratio: 4/3; }
+
+  .lesson {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .lesson-copy {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 34px;
+  }
+  .lesson-copy h3 {
+    font-size: 32px;
+    line-height: 1.08;
+    margin: 0 0 16px;
+    letter-spacing: -.03em;
+  }
+  .lesson-copy p {
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .lesson-copy p:last-child { margin-bottom: 0; }
+  .lesson img {
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+  }
+
+  .poster {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .poster img { width: 100%; height: auto; }
+  .poster .caption { border-top: 1px solid var(--line); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    background: #fff;
+    padding: 32px 0 48px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-copy { padding: 70px 24px 48px; }
+    .hero-image { min-height: 430px; }
+    .section-head { grid-template-columns: 1fr; gap: 14px; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .story, .gallery, .lesson { grid-template-columns: 1fr; }
+    .process { grid-template-columns: 1fr 1fr; }
+    .wide-caption { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { width: min(var(--max), calc(100% - 24px)); }
+    .nav { display: none; }
+    section { padding: 64px 0; }
+    .metrics { grid-template-columns: 1fr; }
+    .process { grid-template-columns: 1fr; }
+    h1 { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand"><a href="../index.html" style="color:inherit;text-decoration:none">Jonathan Katz</a></div>
+    <nav class="nav"><a href="../index.html">Home</a>
+      <a href="#overview">Overview</a>
+      <a href="#design">Design</a>
+      <a href="#manufacturing">Manufacturing</a>
+      <a href="#iteration">Iteration</a>
+      <a href="#testing">Testing</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">MIT 2.008 · Design & Manufacturing II</div>
+      <h1>Injection-Molded Yo-Yo</h1>
+      <p>
+        A semester-long, five-person design and manufacturing project culminating in a production run of more than 50 functional yo-yos.
+        I owned the main injection-molded body from concept through CAD, CAM, mold machining, molding, and final production.
+      </p>
+      <div class="chips">
+        <span class="chip">CAD</span>
+        <span class="chip">CAM</span>
+        <span class="chip">CNC Machining</span>
+        <span class="chip">Injection Molding</span>
+        <span class="chip">DFM / DFA</span>
+        <span class="chip">Testing</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="../assets/2-008/yoyo-01-4d4f371d5e.png" alt="Finished dragon and peasants yo-yo">
+    </div>
+  </div>
+
+  <section id="overview">
+    <div class="wrap">
+      <div class="metrics">
+        <div class="metric"><strong>50+</strong><span>yo-yos manufactured</span></div>
+        <div class="metric"><strong>5</strong><span>person team</span></div>
+        <div class="metric"><strong>5</strong><span>primary product components</span></div>
+        <div class="metric"><strong>1 semester</strong><span>concept to production</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="design">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">01 · Design Ownership</div>
+        <div>
+          <h2>From concept to a moldable, manufacturable body</h2>
+          <p>
+            The yo-yo depicts a dragon chasing a group of peasants—or perhaps the peasants are chasing the dragon—across a rocky landscape.
+            My primary responsibility was the black main body, which forms the structural foundation of the assembly and interfaces with the decorative components and hardware.
+          </p>
+        </div>
+      </div>
+
+      <div class="story">
+        <article class="card">
+          <img class="photo" src="../assets/2-008/yoyo-02-67c64ac826.png" alt="Exploded view of yo-yo components">
+          <div class="card-copy">
+            <h3>Assembly architecture</h3>
+            <p>
+              The finished yo-yo combined injection-molded, thermoformed, and punched plastic parts. The main body had to support the outer decorative assembly while also accommodating the axle hardware and the press-fit interface used in the final design.
+            </p>
+          </div>
+          <div class="caption">Exploded view of the five main yo-yo components.</div>
+        </article>
+
+        <article class="card">
+          <img class="photo" src="../assets/2-008/yoyo-03-dc2c5e50c0.png" alt="Multiple completed yo-yos">
+          <div class="card-copy">
+            <h3>Designed for repeatable production</h3>
+            <p>
+              The goal was not a single prototype. The design needed to be manufactured repeatedly, assembled consistently, and survive handling and drop testing across a run of more than 50 units.
+            </p>
+          </div>
+          <div class="caption">Completed units from the production run.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="manufacturing" class="full-bleed">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">02 · Tooling & Manufacturing</div>
+        <div>
+          <h2>I carried the main body through CAD, CAM, mold machining, and injection molding.</h2>
+          <p>
+            After developing the part geometry, I generated the CAM toolpaths and machined the aluminum tooling used to produce the body.
+            I then helped set up and operate the injection molding machine during process development and production.
+          </p>
+        </div>
+      </div>
+
+      <div class="wide-image">
+        <img src="../assets/2-008/yoyo-04-232dc16828.png" alt="Machined aluminum molds and completed yo-yos">
+        <div class="wide-caption">
+          <div>
+            <strong>Machined tooling</strong>
+            The aluminum molds shown here were used to produce the injection-molded parts for the final assembly.
+          </div>
+          <div>
+            <strong>Production, not just prototyping</strong>
+            The tooling and process had to be reliable enough to support dozens of completed assemblies rather than a one-off part.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">03 · Process Development</div>
+        <div>
+          <h2>Dialing in the injection molding process</h2>
+          <p>
+            Early molding runs revealed the tradeoff between incomplete filling and defects caused by overly aggressive settings.
+            I helped tune the machine until the process produced consistent, fully formed parts.
+          </p>
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Set up the machine</h3>
+          <p>Prepared the injection molding machine and tooling for production trials.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Identify short shots</h3>
+          <p>Initial settings did not completely fill the mold cavity, producing incomplete parts.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Adjust process parameters</h3>
+          <p>Iterated on injection pressure, shot size, and holding pressure while monitoring part quality.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Reach repeatable production</h3>
+          <p>Balanced fill quality against burning from trapped air to achieve reliable final parts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="iteration">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">04 · DFM Iteration</div>
+        <div>
+          <h2>A manufacturing constraint forced a mid-project redesign</h2>
+          <p>
+            We initially treated the mold blanks as the limiting factor on product size. In practice, the available punch for the clear plastic components was more restrictive.
+            By the time we discovered the issue, some tooling had already been manufactured.
+          </p>
+        </div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-copy">
+          <h3>Redesigning around the process</h3>
+          <p>
+            I helped scale down and simplify the yo-yo so it could be manufactured using the equipment actually available to us.
+            The revised architecture reduced the number of press-fit interfaces and allowed the punched clear disk to retain multiple components in the assembly.
+          </p>
+          <p>
+            The experience made the central lesson of the course very tangible: manufacturing constraints need to shape the design from the beginning, before time and material are committed to tooling.
+          </p>
+        </div>
+        <img src="../assets/2-008/yoyo-05-f1311ee213.png" alt="Intermediate and revised yo-yo assemblies">
+      </div>
+    </div>
+  </section>
+
+  <section id="testing">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">05 · Validation</div>
+        <div>
+          <h2>Assembly, drop testing, and final production</h2>
+          <p>
+            I participated in final assembly and drop testing to identify weak points in the completed yo-yos.
+            Testing informed assembly decisions and helped confirm that the revised design could survive normal handling.
+          </p>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-col">
+          <img class="g1" src="../assets/2-008/yoyo-03-dc2c5e50c0.png" alt="Four completed yo-yos">
+          <img class="g3" src="../assets/2-008/yoyo-06-4dfc096d05.png" alt="Injection molded decorative insert">
+        </div>
+        <div class="gallery-col">
+          <img class="g2" src="../assets/2-008/yoyo-01-4d4f371d5e.png" alt="Finished yo-yo product photo">
+          <img class="g4" src="../assets/2-008/yoyo-02-67c64ac826.png" alt="Exploded yo-yo components">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">06 · Project Poster</div>
+        <div>
+          <h2>Course exhibition poster</h2>
+          <p>
+            Our final poster documented the full team design, manufacturing process, press-fit analysis, injection-molding troubleshooting, and lessons learned.
+          </p>
+        </div>
+      </div>
+      <div class="poster">
+        <img src="../assets/2-008/yoyo-07-82e48b6736.png" alt="2.008 yo-yo project poster">
+        <div class="caption">Final course exhibition poster.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Jonathan Katz · Mechanical Engineering Portfolio · MIT 2.008 Design & Manufacturing II
+  </div>
+</footer>
+
+</body>
+</html>
