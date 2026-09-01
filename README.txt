@@ -1,0 +1,1 @@
+Open index.html to view the portfolio. Keep the folder structure intact so project, resume, image, and contact links continue to work.
