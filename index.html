@@ -1,37 +1,215 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jonathan Katz — Mechanical Engineering Portfolio</title>
-<style>
-:root{--bg:#f5f6f8;--paper:#fff;--ink:#14171a;--muted:#68707a;--line:#dfe3e8;--accent:#255bd7;--max:1180px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-a{color:inherit;text-decoration:none}img{display:block;width:100%}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
-.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topin{height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:800;letter-spacing:-.02em}
-nav{display:flex;gap:22px;color:var(--muted);font-size:14px}nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:999px;font-weight:750;font-size:14px;border:1px solid var(--line);background:#fff}
-.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:13px;font-weight:800}
-footer{background:#fff;border-top:1px solid var(--line);padding:34px 0 48px;color:var(--muted);font-size:14px}
-@media(max-width:700px){nav{display:none}.wrap{width:calc(100% - 24px)}}
-
-.hero{background:#fff;border-bottom:1px solid var(--line);padding:112px 0 92px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:72px;align-items:end}
-h1{font-size:clamp(54px,8vw,104px);line-height:.9;letter-spacing:-.065em;margin:18px 0 28px}.hero p{font-size:21px;color:var(--muted);max-width:760px;margin:0}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.side-note{border-left:1px solid var(--line);padding-left:28px;color:var(--muted);font-size:15px}.side-note strong{display:block;color:var(--ink);font-size:16px;margin-bottom:9px}
-section{padding:90px 0}.section-head{display:grid;grid-template-columns:220px 1fr;gap:50px;margin-bottom:38px}.section-head h2{font-size:clamp(34px,4.5vw,56px);line-height:1.03;letter-spacing:-.04em;margin:0 0 12px}.section-head p{font-size:18px;color:var(--muted);max-width:760px;margin:0}
-.projects{display:grid;grid-template-columns:1fr 1fr;gap:24px}.project{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.18s ease}.project:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(20,23,26,.09)}.project img{aspect-ratio:16/10;object-fit:cover}
-.project-copy{padding:28px}.project-meta{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:800}.project h3{font-size:30px;line-height:1.08;letter-spacing:-.035em;margin:10px 0}.project p{color:var(--muted);margin:0 0 20px}.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:#4e5660}
-.about{background:#10141c;color:#fff}.about .section-head p{color:#b9c0c9}.about .eyebrow{color:#7fa6ff}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.about-card{border:1px solid #2a3340;border-radius:18px;padding:30px;background:#171d27}.about-card h3{font-size:24px;margin:0 0 10px}.about-card p{color:#c1c7cf;margin:0}
-.cta{display:flex;align-items:center;justify-content:space-between;gap:30px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px}.cta h2{font-size:38px;line-height:1.05;letter-spacing:-.035em;margin:0 0 8px}.cta p{margin:0;color:var(--muted)}
-@media(max-width:900px){.hero-grid,.section-head,.projects,.about-grid{grid-template-columns:1fr}.hero-grid{gap:38px}.side-note{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.section-head{gap:12px}.cta{align-items:flex-start;flex-direction:column}}
-</style></head><body>
-<header class="top"><div class="wrap topin"><a class="brand" href="index.html">Jonathan Katz</a><nav><a href="#projects">Projects</a><a href="Jonathan_Katz_Resume.pdf" target="_blank">Resume</a><a href="contact.html">Contact</a></nav></div></header>
-<main>
-<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Mechanical Engineer · Designer · Maker</div><h1>Design it.<br>Build it.<br>Test it.</h1><p>I’m a mechanical engineer focused on turning analytical models and CAD into working hardware—from precision mechanisms and manufacturing systems to robotics and experimental equipment.</p><div class="actions"><a class="btn primary" href="#projects">View Projects ↓</a><a class="btn" href="Jonathan_Katz_Resume.pdf" target="_blank">View Resume</a><a class="btn" href="contact.html">Get in Touch</a></div></div><div class="side-note"><strong>MIT Mechanical Engineering</strong>My work spans mechanical design, precision machine design, CAD/CAM, CNC and manual machining, prototyping, testing, FEA, and hands-on system integration.</div></div></section>
-<section id="projects"><div class="wrap"><div class="section-head"><div class="eyebrow">Selected Work</div><div><h2>Projects built from the hardware up</h2><p>Detailed case studies showing the design decisions, manufacturing process, testing, iteration, and final results behind my work.</p></div></div>
-<div class="projects">
-<a class="project" href="projects/2-72-lathe.html"><img src="assets/lathe.jpg" alt="Axial Excellence precision lathe"><div class="project-copy"><div class="project-meta">MIT 2.72 · Elements of Mechanical Design</div><h3>Axial Excellence Precision Lathe</h3><p>A six-person precision machine design project taken from analytical modeling and detailed CAD through machining, integration, alignment, and measured cutting performance.</p><div class="tags"><span class="tag">Precision Design</span><span class="tag">CAD</span><span class="tag">Machining</span><span class="tag">HTM</span><span class="tag">Testing</span></div></div></a>
-<a class="project" href="projects/2-008-yoyo.html"><img src="assets/yoyo.png" alt="Injection-molded dragon yo-yo"><div class="project-copy"><div class="project-meta">MIT 2.008 · Design & Manufacturing II</div><h3>Injection-Molded Yo-Yo</h3><p>A production-focused project culminating in more than 50 finished yo-yos. I owned the main body from concept through CAD, CAM, mold machining, injection molding, and iteration.</p><div class="tags"><span class="tag">DFM</span><span class="tag">CAD/CAM</span><span class="tag">CNC</span><span class="tag">Injection Molding</span></div></div></a>
-</div></div></section>
-<section class="about"><div class="wrap"><div class="section-head"><div class="eyebrow">How I Work</div><div><h2>Engineering beyond the screen</h2><p>I enjoy projects where mechanical analysis, detailed design, manufacturing, and experimental validation all matter.</p></div></div><div class="about-grid"><div class="about-card"><h3>Design + analysis</h3><p>CAD, tolerance decisions, stiffness and thermal modeling, FEA, mechanism design, and translating functional requirements into hardware.</p></div><div class="about-card"><h3>Build + validate</h3><p>CNC/manual machining, prototyping, assembly, instrumentation, troubleshooting, measurement, and iterating until the physical system works.</p></div></div></div></section>
-<section><div class="wrap"><div class="cta"><div><h2>Want the full background?</h2><p>See my experience, education, and technical skills in my resume—or reach out directly.</p></div><div class="actions" style="margin-top:0"><a class="btn primary" href="Jonathan_Katz_Resume.pdf" target="_blank">Resume</a><a class="btn" href="contact.html">Contact</a></div></div></div></section>
-</main><footer><div class="wrap">Jonathan Katz · Mechanical Engineering Portfolio</div></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Jonathan Katz — Mechanical Engineering Portfolio
+  </title>
+  <link href="css/site.css" rel="stylesheet"/>
+  <link href="css/home.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="top">
+   <div class="wrap topin">
+    <a class="brand" href="index.html">
+     Jonathan Katz
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" type="button">
+     Menu
+    </button>
+    <nav>
+     <a href="#projects">
+      Projects
+     </a>
+     <a href="Jonathan_Katz_Resume.pdf" target="_blank">
+      Resume
+     </a>
+     <a href="contact.html">
+      Contact
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main>
+   <section class="hero">
+    <div class="wrap hero-grid">
+     <div>
+      <div class="eyebrow">
+       Mechanical Engineer · Designer · Maker
+      </div>
+      <h1>
+       Design it.
+       <br/>
+       Build it.
+       <br/>
+       Test it.
+      </h1>
+      <p>
+       I’m a mechanical engineer focused on turning analytical models and CAD into working hardware—from precision mechanisms and manufacturing systems to robotics and experimental equipment.
+      </p>
+      <div class="actions">
+       <a class="btn primary" href="#projects">
+        View Projects ↓
+       </a>
+       <a class="btn" href="Jonathan_Katz_Resume.pdf" target="_blank">
+        View Resume
+       </a>
+       <a class="btn" href="contact.html">
+        Get in Touch
+       </a>
+      </div>
+     </div>
+     <div class="side-note">
+      <strong>
+       MIT Mechanical Engineering
+      </strong>
+      My work spans mechanical design, precision machine design, CAD/CAM, CNC and manual machining, prototyping, testing, FEA, and hands-on system integration.
+     </div>
+    </div>
+   </section>
+   <section id="projects">
+    <div class="wrap">
+     <div class="section-head">
+      <div class="eyebrow">
+       Selected Work
+      </div>
+      <div>
+       <h2>
+        Projects built from the hardware up
+       </h2>
+       <p>
+        Detailed case studies showing the design decisions, manufacturing process, testing, iteration, and final results behind my work.
+       </p>
+      </div>
+     </div>
+     <div class="projects">
+      <a class="project" href="projects/2-72-lathe.html">
+       <img alt="Axial Excellence precision lathe" src="assets/home-lathe.jpg"/>
+       <div class="project-copy">
+        <div class="project-meta">
+         MIT 2.72 · Elements of Mechanical Design
+        </div>
+        <h3>
+         Axial Excellence Precision Lathe
+        </h3>
+        <p>
+         A six-person precision machine design project taken from analytical modeling and detailed CAD through machining, integration, alignment, and measured cutting performance.
+        </p>
+        <div class="tags">
+         <span class="tag">
+          Precision Design
+         </span>
+         <span class="tag">
+          CAD
+         </span>
+         <span class="tag">
+          Machining
+         </span>
+         <span class="tag">
+          HTM
+         </span>
+         <span class="tag">
+          Testing
+         </span>
+        </div>
+       </div>
+      </a>
+      <a class="project" href="projects/2-008-yoyo.html">
+       <img alt="Injection-molded dragon yo-yo" src="assets/home-yoyo.png"/>
+       <div class="project-copy">
+        <div class="project-meta">
+         MIT 2.008 · Design &amp; Manufacturing II
+        </div>
+        <h3>
+         Injection-Molded Yo-Yo
+        </h3>
+        <p>
+         A production-focused project culminating in more than 50 finished yo-yos. I owned the main body from concept through CAD, CAM, mold machining, injection molding, and iteration.
+        </p>
+        <div class="tags">
+         <span class="tag">
+          DFM
+         </span>
+         <span class="tag">
+          CAD/CAM
+         </span>
+         <span class="tag">
+          CNC
+         </span>
+         <span class="tag">
+          Injection Molding
+         </span>
+        </div>
+       </div>
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="about">
+    <div class="wrap">
+     <div class="section-head">
+      <div class="eyebrow">
+       How I Work
+      </div>
+      <div>
+       <h2>
+        Engineering beyond the screen
+       </h2>
+       <p>
+        I enjoy projects where mechanical analysis, detailed design, manufacturing, and experimental validation all matter.
+       </p>
+      </div>
+     </div>
+     <div class="about-grid">
+      <div class="about-card">
+       <h3>
+        Design + analysis
+       </h3>
+       <p>
+        CAD, tolerance decisions, stiffness and thermal modeling, FEA, mechanism design, and translating functional requirements into hardware.
+       </p>
+      </div>
+      <div class="about-card">
+       <h3>
+        Build + validate
+       </h3>
+       <p>
+        CNC/manual machining, prototyping, assembly, instrumentation, troubleshooting, measurement, and iterating until the physical system works.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section>
+    <div class="wrap">
+     <div class="cta">
+      <div>
+       <h2>
+        Want the full background?
+       </h2>
+       <p>
+        See my experience, education, and technical skills in my resume—or reach out directly.
+       </p>
+      </div>
+      <div class="actions" style="margin-top:0">
+       <a class="btn primary" href="Jonathan_Katz_Resume.pdf" target="_blank">
+        Resume
+       </a>
+       <a class="btn" href="contact.html">
+        Contact
+       </a>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer>
+   <div class="wrap">
+    Jonathan Katz · Mechanical Engineering Portfolio
+   </div>
+  </footer>
+  <script defer="True" src="js/main.js">
+  </script>
+ </body>
+</html>
