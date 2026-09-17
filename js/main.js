@@ -1,5 +1,13 @@
 // Shared site behavior.
-// Controls the mobile navigation menu.
+// Controls the mobile navigation menu and shared favicon.
+
+// Add the JK mark only as the browser-tab favicon.
+// Using an absolute path keeps it working from both root and /projects pages.
+const favicon = document.createElement("link");
+favicon.rel = "icon";
+favicon.type = "image/svg+xml";
+favicon.href = "/jmkatz.github.io/favicon.svg";
+document.head.appendChild(favicon);
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".menu-toggle").forEach((button) => {
